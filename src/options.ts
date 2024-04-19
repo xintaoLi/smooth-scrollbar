@@ -49,6 +49,12 @@ export class Options {
    */
   delegateTo: EventTarget | null = null;
 
+  /**
+   * Should a new container layer be created to wrap the target element?
+   * default is true
+   */
+  createNewContent = true
+
   get wheelEventTarget() {
     return this.delegateTo;
   }
