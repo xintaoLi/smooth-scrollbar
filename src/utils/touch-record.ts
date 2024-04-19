@@ -40,7 +40,7 @@ export class Tracker {
 }
 
 export class TouchRecord {
-  private _activeTouchID: number;
+  private _activeTouchID?: number;
   private _touchList: { [id: number]: Tracker } = {};
 
   private get _primitiveValue() {
@@ -147,7 +147,7 @@ export class TouchRecord {
 
     const tracker = this._touchList[touch.identifier];
 
-    tracker.update(touch);
+    tracker?.update(touch);
   }
 
   private _delete(touch: Touch) {
@@ -168,6 +168,6 @@ export class TouchRecord {
       _activeTouchID,
     } = this;
 
-    return _touchList[_activeTouchID];
+    return _touchList[_activeTouchID ?? 0];
   }
 }
