@@ -44,6 +44,12 @@ export type ScrollbarOptions = {
    * Options for plugins, see {@link https://github.com/idiotWu/smooth-scrollbar/blob/develop/docs/plugin.md Plugin System}.
    */
   plugins: any,
+
+  /**
+   * Should a new container layer be created to wrap the target element?
+   * default is true
+   */
+  createNewContent: boolean
 };
 
 // Scrollbar.size

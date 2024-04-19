@@ -140,7 +140,7 @@ export class Scrollbar implements I.Scrollbar {
     options?: Partial<I.ScrollbarOptions>,
   ) {
     this.containerEl = containerEl;
-    const contentEl = this.contentEl = document.createElement('div');
+    const contentEl = this.contentEl = options?.createNewContent ? document.createElement('div') : containerEl;
 
     this.options = new Options(options);
 
@@ -163,11 +163,13 @@ export class Scrollbar implements I.Scrollbar {
     // mount content
     contentEl.className = 'scroll-content';
 
-    Array.from(containerEl.childNodes).forEach((node) => {
-      contentEl.appendChild(node);
-    });
+    if (options?.createNewContent) {
+      Array.from(containerEl.childNodes).forEach((node) => {
+        contentEl.appendChild(node);
+      });
 
-    containerEl.appendChild(contentEl);
+      containerEl.appendChild(contentEl);
+    }
 
     // attach track
     this.track = new TrackController(this);
@@ -204,6 +206,7 @@ export class Scrollbar implements I.Scrollbar {
       this._init();
     });
   }
+
 
   /**
    * Returns the size of the scrollbar container element

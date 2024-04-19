@@ -6,6 +6,8 @@
 
 # Smooth Scrollbar
 
+fork from [![smooth-scrollbar]](https://github.com/idiotWu/smooth-scrollbar.git)
+
 **Customizable, Flexible, and High Performance Scrollbars!**
 
 [![npm][npm-version-badge]](https://www.npmjs.com/package/smooth-scrollbar)
