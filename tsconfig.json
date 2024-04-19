@@ -23,6 +23,7 @@
       "smooth-scrollbar/*": [ "src/*" ]
     }
   },
+  "include": ["*.ts", "*.tsx", "*.js"],
   "exclude": [
     "node_modules",
     "build",
