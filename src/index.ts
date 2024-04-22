@@ -16,9 +16,6 @@ import {
   detachStyle,
 } from './style';
 
-export { ScrollbarPlugin };
-
-declare var __SCROLLBAR_VERSION__: string;
 
 /**
  * cast `I.Scrollbar` to `Scrollbar` to avoid error
@@ -29,8 +26,8 @@ declare var __SCROLLBAR_VERSION__: string;
  * @see https://github.com/Microsoft/TypeScript/issues/2672
  */
 
-export default class SmoothScrollbar extends Scrollbar {
-  static version = __SCROLLBAR_VERSION__;
+class SmoothScrollbar extends Scrollbar {
+  static version = import.meta.env.__SCROLLBAR_VERSION__;
 
   static ScrollbarPlugin = ScrollbarPlugin;
 
@@ -137,4 +134,9 @@ export default class SmoothScrollbar extends Scrollbar {
   static detachStyle() {
     return detachStyle();
   }
+}
+
+export default {
+  SmoothScrollbar,
+  ScrollbarPlugin
 }

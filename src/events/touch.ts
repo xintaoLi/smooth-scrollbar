@@ -2,6 +2,7 @@ import * as I from '../interfaces/';
 
 import {
   eventScope,
+  isScrollEnabled,
   TouchRecord,
 } from '../utils/';
 
@@ -36,14 +37,16 @@ export function touchHandler(scrollbar: I.Scrollbar) {
 
     touchRecord.update(evt);
 
-    const { x, y } = touchRecord.getDelta();
+    if (['xAxis', 'yAxis'].some(key => isScrollEnabled(scrollbar, key))) {
+      const { x, y } = touchRecord.getDelta();
 
-    scrollbar.addTransformableMomentum(x, y, evt, (willScroll) => {
-      if (willScroll && evt.cancelable) {
-        evt.preventDefault();
-        activeScrollbar = scrollbar;
-      }
-    });
+      scrollbar.addTransformableMomentum(x, y, evt, (willScroll) => {
+        if (willScroll && evt.cancelable) {
+          evt.preventDefault();
+          activeScrollbar = scrollbar;
+        }
+      });
+    }
   });
 
   addEvent(target, 'touchcancel touchend', (evt: TouchEvent) => {

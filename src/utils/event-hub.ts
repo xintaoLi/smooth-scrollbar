@@ -79,3 +79,7 @@ export function clearEventsOn(scrollbar: Scrollbar) {
 
   eventMap.delete(scrollbar);
 }
+
+export function isScrollEnabled(scrollbar: Scrollbar, key: string) {
+  return (scrollbar.track[key].element.scrollHeight - scrollbar.track[key].thumb.element.scrollHeight) > 1
+}

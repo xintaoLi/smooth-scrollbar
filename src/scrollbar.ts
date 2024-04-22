@@ -140,7 +140,7 @@ export class Scrollbar implements I.Scrollbar {
     options?: Partial<I.ScrollbarOptions>,
   ) {
     this.containerEl = containerEl;
-    const contentEl = this.contentEl = options?.createNewContent ? document.createElement('div') : containerEl;
+    const contentEl = this.contentEl = options?.keepStruct ? containerEl : document.createElement('div');
 
     this.options = new Options(options);
 
@@ -161,9 +161,10 @@ export class Scrollbar implements I.Scrollbar {
     }
 
     // mount content
-    contentEl.className = 'scroll-content';
+    // contentEl.className = 'scroll-content';
+    contentEl.classList.add('scroll-content');
 
-    if (options?.createNewContent) {
+    if (!options?.keepStruct) {
       Array.from(containerEl.childNodes).forEach((node) => {
         contentEl.appendChild(node);
       });

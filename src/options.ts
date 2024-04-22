@@ -53,7 +53,7 @@ export class Options {
    * Should a new container layer be created to wrap the target element?
    * default is true
    */
-  createNewContent = true
+  keepStruct = true
 
   get wheelEventTarget() {
     return this.delegateTo;

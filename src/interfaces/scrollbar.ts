@@ -45,11 +45,12 @@ export type ScrollbarOptions = {
    */
   plugins: any,
 
+
   /**
-   * Should a new container layer be created to wrap the target element?
-   * default is true
+   * Is it permissible to alter the existing structure?
+   * By default, the existing structure will be altered by wrapping it in an additional layer.
    */
-  createNewContent: boolean
+  keepStruct: boolean
 };
 
 // Scrollbar.size

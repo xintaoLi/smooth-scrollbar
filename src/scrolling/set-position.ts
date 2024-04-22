@@ -41,9 +41,11 @@ export function setPosition(
   offset.x = x;
   offset.y = y;
 
-  setStyle(contentEl, {
-    '-transform': `translate3d(${-x}px, ${-y}px, 0)`,
-  });
+  if (!options.keepStruct) {
+    setStyle(contentEl, {
+      '-transform': `translate3d(${-x}px, ${-y}px, 0)`,
+    });
+  }
 
   track.update();
 
